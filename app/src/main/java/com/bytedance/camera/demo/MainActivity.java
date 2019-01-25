@@ -1,7 +1,11 @@
 package com.bytedance.camera.demo;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_custom).setOnClickListener(v -> {
+            //ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_CODE_PRESSION_PHONE_STATE);
+            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
             //todo 在这里申请相机、麦克风、存储的权限
             startActivity(new Intent(MainActivity.this, CustomCameraActivity.class));
 
